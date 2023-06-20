@@ -13,16 +13,16 @@ app.use(express.json())
 //app.use(upload.any())  парсинг формдаты
 
 
-app.get('/',(req,res)=>{
-    res.send('OK!')
-})
+// app.get('/',(req,res)=>{
+//     res.send('OK!')
+// })
 
-app.post('/api',(req,res)=>{
-    console.log(req.body)
-    res.status(200).send('POST /api works | Success!')
-})
+// app.post('/api',(req,res)=>{
+//     console.log(req.body)
+//     res.status(200).send('POST /api works | Success!')
+// })
 
-
+app.use(require('./app/auth/routes'))
 
 app.listen (3000,()=>{
     console.log('Server is listening on port 3000')
