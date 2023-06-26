@@ -28,7 +28,8 @@ const Company = sequelize.define('Company', {
 
     }
 
-})
+},{
+    timestamps:false,})
 
 
 module.exports = Company;

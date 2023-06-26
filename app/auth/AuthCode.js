@@ -5,10 +5,6 @@ const AuthCode = sequelize.define('AuthCode', {
     email: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey:true,
-        autoIncrement:true
-     
-
     },
   code:{
     type: DataTypes.STRING,
@@ -16,10 +12,12 @@ const AuthCode = sequelize.define('AuthCode', {
   },
 
   valid_till:{
-    type: DataTypes.STRING,
+    type: DataTypes.DATE,
     allowNull: false,
-  }
-})
+  },
+},{
+  timestamps:false,}
+)
 
 
-module.exports = Company;
+module.exports = AuthCode;

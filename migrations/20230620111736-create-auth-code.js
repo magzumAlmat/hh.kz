@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('AuthCode',{
+    await queryInterface.createTable('AuthCodes',{
       id:{
         allowNull:false,
         autoIncrement:true,
@@ -13,8 +13,6 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
-
     },
 
    
@@ -26,9 +24,9 @@ module.exports = {
   },
 
   valid_till: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATE(6),
     allowNull: false,
-    unique: true
+    
 
 },
     
@@ -38,7 +36,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('AuthCode',{})
+    await queryInterface.dropTable('AuthCodes',{})
     /**
      * Add reverting commands here.
      *

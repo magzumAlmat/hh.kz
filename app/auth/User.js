@@ -1,7 +1,7 @@
 const {DataTypes} = require('sequelize')
 const sequelize = require('../../config/db')
-const Role = sequelize('Role')
-const Company = sequelize('Company')
+const Role = require('./Role')
+const Company = require('./Company')
 const User = sequelize.define('User', {
     email: {
         type: DataTypes.STRING,
@@ -13,7 +13,7 @@ const User = sequelize.define('User', {
     },
     password: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     phone: {
         type: DataTypes.STRING,
@@ -22,10 +22,11 @@ const User = sequelize.define('User', {
     },
     full_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     }
 
-})
+},{
+    timestamps:false,})
 
 User.belongsTo(Role,{foreignKey:'roleId'})
 User.belongsTo(Company,{foreignKey:'companyId'})
