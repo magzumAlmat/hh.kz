@@ -8,6 +8,7 @@ const passport =require('passport')
 app.use(logger('dev'))
 app.use(express.urlencoded())  //сериализация   на уровне экспресса для того чтобы бэк понял пост запрос 
 app.use(express.json())
+app.use(express.static(__dirname+'/public'))
 
 
 

@@ -9,16 +9,6 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Определяем функцию для отправки сообщения
-// function sendEmail(code) {
-//   const mailOptions = {
-//     from: 'olzhaszholayev@gmail.com', 
-//     to: 'almat.magzum@gmail.com', 
-//     subject: 'Тестовое сообщение',
-//     text: 'Привет, это тестовое сообщение!'+code 
-//   };
-
-
 function sendEmail(to,subject,text) {
     const mailOptions = {
       from: 'olzhaszholayev@gmail.com', 
@@ -36,5 +26,4 @@ function sendEmail(to,subject,text) {
   });
 }
 
-// Вызываем функцию для отправки сообщения
 module.exports=sendEmail;

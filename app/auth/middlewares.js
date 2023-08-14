@@ -1,12 +1,13 @@
 const Role = require('./Role')
 const User = require('./User')
+
 const isEmployee = async (req, res, next) => {
     console.log('isEmployee started')
     try {
         if(req.user){
             const role = await Role.findByPk(req.user.roleId)
             console.log('ROLE= ',role.name)
-            if(role.name == "employee") next()
+            if(role.name === "employee") next()
             else res.status(403).send({message: "Access denied"})
         }
         else res.status(403).send({message: "Unauthorized"})

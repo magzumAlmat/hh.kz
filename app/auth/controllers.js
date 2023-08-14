@@ -7,7 +7,7 @@
 // const {jwtOptions} = require('./passport');
 // const { where } = require("sequelize");
 
-const sendEmail = require('../utils/sendMail')
+
 const AuthCode = require('./AuthCode')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')
@@ -15,6 +15,7 @@ const User = require('./User')
 const Role = require('./Role')
 const {jwtOptions} = require('./passport');
 const Company = require('./Company');
+const sendEmail = require('../utils/sendMail')
 
 const sendVerificationEmail=(req,res)=>{
     console.log(req.body)
@@ -26,7 +27,7 @@ const sendVerificationEmail=(req,res)=>{
         valid_till: Date.now() + 120000
     })
     
-    sendMail(req.body.email,"Код авторизации для hh.kz",code)
+    sendEmail(req.body.email,"Код авторизации для hh.kz",code)
     res.status(200).end()
     // res.send('Mail SENDED')
 }
@@ -37,15 +38,15 @@ const verifyCode=async(req,res)=>{
         order:[['valid_till','DESC']] } 
     )
     if (!authCode){
-        console.log(1,typeof(1))
+        // console.log(1,typeof(1))
         res.status(401).send({error:"EMAIL NOT FOUND"})
     }else if((new Date(authCode.valid_till).getTime()) < Date.now()){
-        console.log(2)
-        console.log(new Date(authCode.valid_till).getTime())
-        console.log(Date.now())
+        // console.log(2)
+        // console.log(new Date(authCode.valid_till).getTime())
+        // console.log(Date.now())
         res.status(401).send({error:"время прошло"})
     }else if(authCode.code !== req.body.code){
-        console.log(3)
+        // console.log(3)
         res.status(401).send({error:"код не совпадает"})
     }
     else{
