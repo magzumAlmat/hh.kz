@@ -3,6 +3,7 @@ const Vacancy = require('./models/Vacancy')
 const Apply = require('../applies/Apply')
 
 const validateVacancy = (req, res, next) =>{
+    console.log('Validate Vacancy started')
     try {
         let errors = {};
 

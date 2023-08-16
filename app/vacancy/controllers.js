@@ -14,6 +14,7 @@ const getExperiences = async (req, res)=>{
 }
 
 const createVacancy = async (req, res) =>{
+    console.log('Create valancy started')
     try {
         const vacancy = await Vacancy.create({
             name: req.body.name,

@@ -17,6 +17,7 @@ const isEmployee = async (req, res, next) => {
 }
 
 const isManager = async (req, res, next) => {
+    console.log('isManager Started')
     try {
         if(req.user){
             const role = await Role.findByPk(req.user.roleId)
