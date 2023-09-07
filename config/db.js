@@ -1,7 +1,8 @@
 const{Sequelize} = require('sequelize');
 let sequelize;
 const dbConf = require('./config')
-if (process.env==='production'){
+if (process.env.NODE_ENV==='production'){
+    console.log('prod MODE TURNED ON')
      sequelize = new Sequelize({
         database:dbConf.production.database, 
         username:dbConf.production.username,
