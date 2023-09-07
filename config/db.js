@@ -1,14 +1,25 @@
 const{Sequelize} = require('sequelize');
-
+let sequelize;
 const dbConf = require('./config')
-
-const sequelize = new Sequelize({
+if (process.env==='production'){
+     sequelize = new Sequelize({
+        database:dbConf.production.database, 
+        username:dbConf.production.username,
+        host:dbConf.production.host,
+        dialect:dbConf.production.dialect,
+        password:dbConf.production.password, 
+        port:dbConf.production.port,
+    })
+}
+else{
+sequelize = new Sequelize({
     database:dbConf.development.database, 
     username:dbConf.development.username,
     host:dbConf.development.host,
     dialect:dbConf.development.dialect,
     password:dbConf.development.password, 
 })
+}
 sequelize
     .authenticate ( )
     .then ( () => {
