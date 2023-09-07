@@ -6,7 +6,7 @@ const passport =require('passport')
 
 //middleware 1----
 app.use(logger('dev'))
-app.use(express.urlencoded())  //сериализация   на уровне экспресса для того чтобы бэк понял пост запрос 
+app.use(express.urlencoded({ extended: true })); //сериализация   на уровне экспресса для того чтобы бэк понял пост запрос 
 app.use(express.json())
 app.use(express.static(__dirname+'/public'))
 
