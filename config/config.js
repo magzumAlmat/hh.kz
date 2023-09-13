@@ -7,6 +7,7 @@ module.exports={
         host:'localhost',
         dialect:'postgres'
     },
+
     production:{
         username:'doadmin',
         password:'AVNS_nH1mMs0Lohu1k10zHK3',
@@ -21,4 +22,5 @@ module.exports={
         },
     }
 }
+
 
