@@ -13,7 +13,7 @@ if (process.env.NODE_ENV==='production'){
         port:dbConf.production.port,
         dialectOptions: {
             ssl: {
-              ca: fs.readFileSync('config/ca-certificate.crt')
+                ca: fs.readFileSync('config/ca-certificate.crt')
             },
         },
 
