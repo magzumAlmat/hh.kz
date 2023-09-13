@@ -51,15 +51,35 @@ const verifyCode=async(req,res)=>{
     }
     else{
         console.log(4)
-        const role = await Role.findOne({where:{name: 'employee'}})
-        let user = await User.findOne({where: {email: req.body.email}})
-        if(!user){
-            user=await User.create({
-                roleId: role.id,
-                email: req.body.email
-            })
-         }
+        const role = await Role.findOne({where: { name: 'employee' }})
+        let user = await User.findOne({where: { email: req.body.email }})
+        
+        // if (!user) {
+        //     user = await User.create({
+        //         roleId: role.id, 
+        //         email: req.body.email
+        //     })
+        // }
 
+       
+        if (!role) {
+            // Handle the case where the role 'employee' is not found.
+            res.status(401).send({ error: "Role 'employee' not found" });
+        } else {
+            let user = await User.findOne({ where: { email: req.body.email } });
+        
+            if (!user) {
+                // Create a new user if it doesn't exist
+                user = await User.create({
+                    roleId: role.id, // Make sure role.id exists
+                    email: req.body.email
+                });
+            }
+        
+            // Rest of your code...
+        }
+        
+       
         const token = jwt.sign({
             id: user.id,
             email: user.email,
